@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+   <label> Testin:  </label>
+   <input type="text" id="bitexInfo" onchange="convert()">
+  
+
+    <!-- <b> <label for="#" ; style="text-decoration:underline;">Category II: Research, Publications and Academic
+            Contributions</label>
+    </b>  -->
+    <br>
+<div>
+
+<!-- <label for="">Category II: Research, Publications and Academic Contributions</label> -->
+<br>
+<label for="">1. Research Papers published in Peer Reviewed or UGC listed Journals:(With Evidences)</label>
+<br>
+
+<label for="">Title with Page Nos</label>
+<br>
+<input type="text" name="title" class="form-control" id="title">
+<br>
+<label for="">Journal & Date of Publication</label>
+<br>
+<input type="text" name="journal" class="form-control" id="date">
+<br>
+<label for="">ISSN / ISBN No. of Publication</label>
+<br>
+<input type="text" name="issn" class="form-control" id="issn">
+<br>
+<label for="">Whether Peer Reviewed Impact Factor,if any</label>
+<br>
+<input type="text" name="review" class="form-control" id="review">
+<br>
+<label for="">No. of co-authors</label>
+<br>
+<input type="text" name="coauthors" class="form-control" id="noAuth">
+<br>
+<label for="">Whether you are the main author</label>
+<br>
+<input type="text" name="mainauthor" class="form-control" id="main">
+<br>
+<label for="">Score,(Please refer Table 2: Appendix II) author</label>
+<br>
+<input type="text" name="score" class="form-control" id="score">
+<br>
+</div>
+<script>
+function convert() {
+let citation = document.querySelector('#bitexInfo').value;
+const regex = /([^\s]+)\s*=\s*\{([^}]*)\}/g;
+const matches = citation.matchAll(regex);
+
+for (const match of matches) 
+ { let key = match[1];
+    console.log(key);
+    let value = match[2];
+  let inputFields = document.querySelectorAll('input[type="text"]');
+  let inputArray = Array.from(inputFields);
+  for (let i = 0; i < inputArray.length; i++) {
+    let inputField = inputArray[i];
+let fieldName = inputArray[i].getAttribute('name');
+  if (fieldName === key) {
+    inputField.value = value;
+
+}
+  }
+
+
+  
+  }
+}
+</script>
+</body>
+</html>
